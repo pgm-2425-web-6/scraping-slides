@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Webscraping</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Title Slide -->
+			<section>
+				<section>
+					<h1>Webscraping</h1>
+					<p>An In-Depth Introduction</p>
+				</section>
+
+				<!-- Transition: Introduction -->
+				<section>
+					<h2>Welcome to the World of Webscraping</h2>
+					<p>Discover how to extract valuable data from the web, transform it, and use it to drive insights
+						and decisions.</p>
+				</section>
+
+				<!-- What is Webscraping? -->
+				<section>
+					<h2>What is Webscraping?</h2>
+					<p>Webscraping is the automated process of extracting data from websites. It allows users to gather
+						and analyze large amounts of data from across the web quickly and efficiently.</p>
+				</section>
+
+				<!-- Transition: Uses of Webscraping -->
+				<section>
+					<h2>Why Use Webscraping?</h2>
+					<p>Explore the practical applications of webscraping and how it can benefit various industries.</p>
+				</section>
+
+				<!-- Uses of Webscraping -->
+				<section>
+					<h2>Uses of Webscraping</h2>
+					<ul>
+						<li><strong>Data Analysis:</strong> Gather data for analytical purposes.</li>
+						<li><strong>Price Monitoring:</strong> Track competitor pricing and market trends.</li>
+						<li><strong>Market Research:</strong> Collect insights on industry trends and consumer behavior.
+						</li>
+						<li><strong>Lead Generation:</strong> Extract contact information for potential customers.</li>
+						<li><strong>News Aggregation:</strong> Collect and display news from various sources.</li>
+					</ul>
+				</section>
+			</section>
+			<!-- Transition: Tools for Webscraping -->
+			<section>
+				<h2>Tools of the Trade</h2>
+				<p>Learn about the powerful tools available for webscraping in JavaScript and Python.</p>
+			</section>
+			<section>
+
+				<!-- Webscraping with JavaScript -->
+				<section>
+					<h2>Webscraping with JavaScript</h2>
+					<p>JavaScript offers several libraries for webscraping, including:</p>
+					<ul>
+						<li><strong>Cheerio:</strong> Fast, flexible, and lean implementation of core jQuery designed
+							for the server.</li>
+						<li><strong>Puppeteer:</strong> A headless Chrome Node.js API for automated browser actions.
+						</li>
+					</ul>
+				</section>
+
+				<!-- Cheerio Example -->
+				<section>
+					<h2>Cheerio Example</h2>
+					<pre><code class="javascript">
+		const cheerio = require('cheerio');
+		const axios = require('axios');
+		
+		axios.get('https://example.com')
+			.then(response => {
+				const $ = cheerio.load(response.data);
+				const title = $('title').text();
+				console.log(title);
+			});
+					</code></pre>
+				</section>
+
+				<!-- Puppeteer Example -->
+				<section>
+					<h2>Puppeteer Example</h2>
+					<pre><code class="javascript">
+		const puppeteer = require('puppeteer');
+		
+		(async () => {
+			const browser = await puppeteer.launch();
+			const page = await browser.newPage();
+			await page.goto('https://example.com');
+			const title = await page.title();
+			console.log(title);
+			await browser.close();
+		})();
+					</code></pre>
+				</section>
+			</section>
+			<!-- Webscraping with Python -->
+			 <section>
+			<section>
+				<h2>Webscraping with Python</h2>
+				<p>Python is a popular language for webscraping, with powerful libraries such as:</p>
+				<ul>
+					<li><strong>BeautifulSoup:</strong> Parses HTML and XML documents to extract data.</li>
+					<li><strong>Scrapy:</strong> An open-source and collaborative web crawling framework.</li>
+				</ul>
+			</section>
+
+			<!-- BeautifulSoup Example -->
+			<section>
+				<h2>BeautifulSoup Example</h2>
+				<pre><code class="python">
+		import requests
+		from bs4 import BeautifulSoup
+		
+		response = requests.get('https://example.com')
+		soup = BeautifulSoup(response.text, 'html.parser')
+		title = soup.title.string
+		print(title)
+					</code></pre>
+			</section>
+
+			<!-- Scrapy Example -->
+			<section>
+				<h2>Scrapy Example</h2>
+				<pre><code class="python">
+		import scrapy
+		
+		class ExampleSpider(scrapy.Spider):
+			name = 'example'
+			start_urls = ['https://example.com']
+		
+			def parse(self, response):
+				title = response.css('title::text').get()
+				print(title)
+					</code></pre>
+			</section>
+
+			<!-- Webscraping with Selenium -->
+			<section>
+				<h2>Webscraping with Selenium</h2>
+				<p>Selenium is a versatile tool that automates browsers, making it a great choice for scraping dynamic
+					websites.</p>
+				<ul>
+					<li><strong>Automates Web Browsers:</strong> Interacts with web pages like a human user.</li>
+					<li><strong>Supports Multiple Languages:</strong> Works with Python, Java, C#, and more.</li>
+				</ul>
+			</section>
+
+			<!-- Selenium Example -->
+			<section>
+				<h2>Selenium Example</h2>
+				<pre><code class="python">
+		from selenium import webdriver
+		
+		driver = webdriver.Chrome()
+		driver.get('https://example.com')
+		title = driver.title
+		print(title)
+		driver.quit()
+					</code></pre>
+			</section>
+		</section>
+		<section>
+			<!-- Transition: Best Practices -->
+			<section>
+				<h2>Ensuring Ethical Webscraping</h2>
+				<p>Learn the best practices for ethical and responsible webscraping.</p>
+			</section>
+
+			<!-- Best Practices -->
+			<section>
+				<h2>Best Practices</h2>
+				<ul>
+					<li><strong>Respect Robots.txt:</strong> Adhere to the website's robots.txt file to avoid scraping
+						prohibited areas.</li>
+					<li><strong>Avoid Overloading Servers:</strong> Use polite crawling speeds and handle data
+						efficiently.</li>
+					<li><strong>Use Proxies:</strong> Distribute requests to avoid detection and minimize load on
+						servers.</li>
+					<li><strong>Handle Captchas:</strong> Implement strategies to deal with captchas responsibly.</li>
+				</ul>
+			</section>
+
+			<!-- Transition: Legalities -->
+			<section>
+				<h2>Understanding the Legal Landscape</h2>
+				<p>It's crucial to understand the legalities surrounding webscraping to stay compliant and avoid
+					potential issues.</p>
+			</section>
+
+			<!-- Legalities of Webscraping -->
+			<section>
+				<h2>Legalities of Webscraping</h2>
+				<ul>
+					<li><strong>Terms of Service:</strong> Always check the website's terms of service to ensure
+						compliance.</li>
+					<li><strong>Copyright and Data Ownership:</strong> Be aware of data ownership and intellectual
+						property laws.</li>
+					<li><strong>Privacy Concerns:</strong> Avoid scraping personal data without proper authorization.
+					</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<!-- Transition: Data Preprocessing -->
+			<section>
+				<h2>Data Preprocessing</h2>
+				<p>Before visualizing data, it's essential to preprocess it to ensure accuracy and relevance. This involves cleaning, transforming, and organizing the data.</p>
+			</section>
+
+			<!-- Data Preprocessing with JavaScript -->
+			<section>
+				<h2>Data Preprocessing with JavaScript</h2>
+				<p>JavaScript, with libraries like D3.js and lodash, can also be used for data preprocessing.</p>
+				<pre><code class="javascript">
+			const _ = require('lodash');
+			const d3 = require('d3');
+
+			// Load data
+			d3.csv('data.csv').then(data => {
+				// Handle missing values
+				data = data.map(d => ({
+					...d,
+					value: d.value || 0
+				}));
+
+				// Convert data types
+				data.forEach(d => {
+					d.date = new Date(d.date);
+					d.value = +d.value;
+				});
+
+				// Normalize data
+				const mean = _.meanBy(data, 'value');
+				const std = Math.sqrt(_.meanBy(data, d => Math.pow(d.value - mean, 2)));
+				data = data.map(d => ({
+					...d,
+					value: (d.value - mean) / std
+				}));
+
+				console.log(data);
+			});
+				</code></pre>
+			</section>
+
+			<!-- Data Preprocessing with Python -->
+			<section>
+				<h2>Data Preprocessing with Python</h2>
+				<p>Python offers powerful libraries for data preprocessing, such as Pandas and NumPy.</p>
+				<pre><code class="python">
+			import pandas as pd
+			import numpy as np
+
+			# Load data
+			data = pd.read_csv('data.csv')
+
+			# Handle missing values
+			data.fillna(method='ffill', inplace=True)
+
+			# Convert data types
+			data['date'] = pd.to_datetime(data['date'])
+
+			# Normalize data
+			data['value'] = (data['value'] - data['value'].mean()) / data['value'].std()
+
+			print(data.head())
+				</code></pre>
+			</section>
+		</section>
+
+			<!-- Conclusion -->
+			<section>
+				<h2>Conclusion</h2>
+				<p>Whether for business insights, academic research, or personal projects, webscraping opens up a world
+					of data. Use it wisely and ethically!</p>
+			</section>
+
+			<!-- Questions Slide -->
+			<section>
+				<h2>Questions?</h2>
+				<p>Feel free to ask any questions. Let's discuss!</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
